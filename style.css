@@ -55,6 +55,14 @@ body {
     text-align: center;
 }
 
+.restart {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 5px;
+    border: none; 
+}
+
 .tic-tac-toe {
     width: 460px;
     height: auto;
