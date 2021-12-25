@@ -5,6 +5,9 @@ const winMsg = document.querySelector('.winning-message');
 const restart = document.querySelector('.restart');
 let currentPlayer;
 
+// Render Win message
+const winningMsg = (player) => winMsg.innerText = `Player ${player.innerText} wins`;
+
 // Button to restart (reload) the game
 restart.addEventListener('click', () => location.reload());
 
@@ -26,23 +29,22 @@ players.map(player => {
             boxes[i].innerText = player.innerText;
         }
             if (boxes[0].innerText === player.innerText && boxes[1].innerText === player.innerText && boxes[2].innerText === player.innerText){
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[0].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[8].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[0].innerText === player.innerText && boxes[3].innerText === player.innerText && boxes[6].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[1].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[7].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[2].innerText === player.innerText && boxes[5].innerText === player.innerText && boxes[8].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[3].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[5].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[6].innerText === player.innerText && boxes[7].innerText === player.innerText && boxes[9].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             } else if (boxes[2].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[6].innerText === player.innerText) {
-                winMsg.innerText = `Player ${player.innerText} wins`;
+                winningMsg(player);
             }
         })
     }
 })
-

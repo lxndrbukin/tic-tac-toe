@@ -24,7 +24,7 @@ body {
 }
 
 .player {
-    width: 200px;
+    width: 60px;
     height: 60px;
     background-color: white;
     border-radius: 10px;
@@ -35,12 +35,11 @@ body {
 
 .player-info {
     width: 100%;
-    padding: 15px;
+    padding-left: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     margin: auto;
-    font-size: 25px;
+    font-size: 50px;
     font-weight: bold;
 }
 
