@@ -1,65 +1,56 @@
 :root {
-    --green: rgba(34, 191, 121, 1);
-    --dark-green: rgba(14, 117, 72, 1);
+  --green: rgba(34, 191, 121, 1);
+  --dark-green: rgba(14, 117, 72, 1);
 }
 
 body {
-    margin: 0;
-    background-color: var(--green);
-    width: 100%;
+  margin: 0;
+  background-color: var(--green);
+  width: 100%;
 }
 
 .game-wrapper {
-    margin: auto;
-    width: 500px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  margin: auto;
+  width: 500px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .players {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 10px 30px 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px 30px 10px;
 }
 
 .player {
-    width: 60px;
-    height: 60px;
-    background-color: white;
-    border-radius: 10px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    display: flex;
+  width: 100%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  font-size: 50px;
+  font-weight: bold;
 }
 
-.player-info {
-    width: 100%;
-    padding-left: 10px;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    font-size: 50px;
-    font-weight: bold;
-}
 
 .current {
-    border-bottom: 5px solid var(--dark-green);
-    box-shadow: 1px 1px 10px var(--dark-green);
+  border-bottom: 5px solid var(--dark-green);
+  box-shadow: 1px 1px 10px var(--dark-green);
 }
 
 .winning-message {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .restart {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 5px;
-    border-radius: 5px;
-    border: none; 
+  width: fit-content;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 5px;
+  border: none; 
 }
 
 .tic-tac-toe {

@@ -1,50 +1,75 @@
-// Variables
-const boxes = Array.from(document.getElementsByClassName('box'));
-const players = Array.from(document.getElementsByClassName('player'));
-const winMsg = document.querySelector('.winning-message');
-const restart = document.querySelector('.restart');
-let currentPlayer;
+class Game {
+  constructor() {
+    this.players = ['X', 'O'];
+    this.currentPlayer = 'X';
+    this.currentPlayerIsCircle = false;
+    this.boxes = ['', '', '', '', '', '', '', '', ''];
+    this.winningCombinations = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+  }
 
-// Render Win message
-const winningMsg = (player) => winMsg.innerText = `Player ${player.innerText} wins`;
+  addEventListeners() {
+    let { currentPlayer, currentPlayerIsCircle, boxes, checkWin } = this;
+    const boxDivs = Array.from(document.querySelectorAll('.box'));
+    boxes.map((box, index) => {
+      boxDivs[index].addEventListener('click', () => {
+        // change players
+        currentPlayer = !currentPlayerIsCircle ? 'X' : 'O';
+        currentPlayerIsCircle = !currentPlayerIsCircle;
+        // current player box tick
+        boxes[index] = currentPlayer;
+        boxDivs[index].innerHTML = currentPlayer;
+        checkWin();
+      });
+    });
+  }
 
-// Button to restart (reload) the game
-restart.addEventListener('click', () => location.reload());
-
-players.map(player => {
-    player.addEventListener('click', () => {
-        if (player.classList.contains(`${player.innerText}`)) {
-            player.className = `player`;
-        } else if (!player.classList.contains(`${player.innerText}`)) {
-            player.className = `player ${player.innerText} current`;
-        }
-    })
-})
-
-// All possible combinations of the game
-players.map(player => {
-    for (let i = 0; i < boxes.length; i++){
-        boxes[i].addEventListener('click', () => {
-        if (player.classList.contains(player.innerText)) {    
-            boxes[i].innerText = player.innerText;
-        }
-            if (boxes[0].innerText === player.innerText && boxes[1].innerText === player.innerText && boxes[2].innerText === player.innerText){
-                winningMsg(player);
-            } else if (boxes[0].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[8].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[0].innerText === player.innerText && boxes[3].innerText === player.innerText && boxes[6].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[1].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[7].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[2].innerText === player.innerText && boxes[5].innerText === player.innerText && boxes[8].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[3].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[5].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[6].innerText === player.innerText && boxes[7].innerText === player.innerText && boxes[9].innerText === player.innerText) {
-                winningMsg(player);
-            } else if (boxes[2].innerText === player.innerText && boxes[4].innerText === player.innerText && boxes[6].innerText === player.innerText) {
-                winningMsg(player);
-            }
+  generateTemplate() {
+    const showBoxes = () => {
+      return this.boxes
+        .map((box, index) => {
+          return /*html*/ `<div class="box">${box}</div>`;
         })
-    }
-})
+        .join('');
+    };
+    return /*html*/ `
+      <div class="game-wrapper">
+        <div class="winning-message"></div>
+          <div class="tic-tac-toe">
+            ${showBoxes()}
+          </div>
+      </div>
+    `;
+  }
+
+  checkWin() {
+    let { winningCombinations, boxes, currentPlayer } = this;
+    winningCombinations.some((combination) => {
+      combination.every((index) => {
+        if (boxes[index] === currentPlayer) {
+          console.log('yey');
+        }
+      });
+    });
+  }
+
+  createGame() {
+    const root = document.querySelector('.root');
+    root.innerHTML = this.generateTemplate();
+    this.addEventListeners();
+  }
+}
+
+const root = document.querySelector('.root');
+
+const tictactoe = new Game();
+
+tictactoe.createGame();
