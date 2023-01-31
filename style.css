@@ -33,13 +33,12 @@ body {
   font-weight: bold;
 }
 
-
 .current {
   border-bottom: 5px solid var(--dark-green);
   box-shadow: 1px 1px 10px var(--dark-green);
 }
 
-.winning-message {
+.message {
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
@@ -50,75 +49,75 @@ body {
   margin: 0 auto;
   padding: 5px;
   border-radius: 5px;
-  border: none; 
+  border: none;
 }
 
 .tic-tac-toe {
-    width: 460px;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position: absolute;
-    top: 20%;
+  width: 460px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: absolute;
+  top: 20%;
 }
 
 .box {
-    height: 150px;
-    width: 150px;
-    display: flex;
-    border: none;
-    background-color: transparent;
-    color: black;
-    justify-content: center;
-    font-size: 130px;
+  height: 150px;
+  width: 150px;
+  display: flex;
+  border: none;
+  background-color: transparent;
+  color: black;
+  justify-content: center;
+  font-size: 130px;
 }
 
 .box:focus {
-    outline: none;
+  outline: none;
 }
 
 .box i {
-    margin: auto;
-    font-size: 50px;
+  margin: auto;
+  font-size: 50px;
 }
 
 .box .fa-x {
-    margin: auto;
+  margin: auto;
 }
 
 .box:nth-of-type(1) {
-    border-bottom: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(2) {
-    border-left: 7px solid var(--dark-green);
-    border-right: 7px solid var(--dark-green);
-    border-bottom: 7px solid var(--dark-green);
+  border-left: 7px solid var(--dark-green);
+  border-right: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(3) {
-    border-bottom: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(4) {
-    border-bottom: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(5) {
-    border-left: 7px solid var(--dark-green);
-    border-right: 7px solid var(--dark-green);
-    border-bottom: 7px solid var(--dark-green);
+  border-left: 7px solid var(--dark-green);
+  border-right: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(6) {
-    border-bottom: 7px solid var(--dark-green);
+  border-bottom: 7px solid var(--dark-green);
 }
 
 .box:nth-of-type(8) {
-    border-left: 7px solid var(--dark-green);
-    border-right: 7px solid var(--dark-green);
+  border-left: 7px solid var(--dark-green);
+  border-right: 7px solid var(--dark-green);
 }
 
 .box-filling {
-    margin: auto;
+  margin: auto;
 }

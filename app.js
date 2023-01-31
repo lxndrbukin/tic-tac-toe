@@ -3,8 +3,9 @@ class Game {
     this.players = ['X', 'O'];
     this.currentPlayer = 'X';
     this.currentPlayerIsCircle = false;
+    this.winner = false;
     this.boxes = ['', '', '', '', '', '', '', '', ''];
-    this.winningCombinations = [
+    this.winningCombos = [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -14,10 +15,11 @@ class Game {
       [0, 4, 8],
       [2, 4, 6],
     ];
+    this.message = `It's ${this.currentPlayer}'s turn`;
   }
 
   addEventListeners() {
-    let { currentPlayer, currentPlayerIsCircle, boxes, checkWin } = this;
+    let { currentPlayer, currentPlayerIsCircle, boxes, winner } = this;
     const boxDivs = Array.from(document.querySelectorAll('.box'));
     boxes.map((box, index) => {
       boxDivs[index].addEventListener('click', () => {
@@ -27,14 +29,15 @@ class Game {
         // current player box tick
         boxes[index] = currentPlayer;
         boxDivs[index].innerHTML = currentPlayer;
-        checkWin();
+        this.checkWin(currentPlayer, winner);
       });
     });
   }
 
   generateTemplate() {
+    const { boxes, message } = this;
     const showBoxes = () => {
-      return this.boxes
+      return boxes
         .map((box, index) => {
           return /*html*/ `<div class="box">${box}</div>`;
         })
@@ -42,7 +45,7 @@ class Game {
     };
     return /*html*/ `
       <div class="game-wrapper">
-        <div class="winning-message"></div>
+        <div class="message">${message}</div>
           <div class="tic-tac-toe">
             ${showBoxes()}
           </div>
@@ -50,15 +53,29 @@ class Game {
     `;
   }
 
-  checkWin() {
-    let { winningCombinations, boxes, currentPlayer } = this;
-    winningCombinations.some((combination) => {
-      combination.every((index) => {
-        if (boxes[index] === currentPlayer) {
-          console.log('yey');
-        }
-      });
-    });
+  showMessage(currentPlayer, winner) {
+    const message = document.querySelector('.message');
+    if (winner) {
+      message.innerHTML = `Player ${currentPlayer} wins!`;
+    } else {
+      message.innerHTML = `Now it's ${currentPlayer}'s turn!`;
+    }
+  }
+
+  checkWin(currentPlayer, winner) {
+    let { winningCombos, boxes } = this;
+    for (let winningCombo of winningCombos) {
+      if (
+        boxes[winningCombo[0]] === boxes[winningCombo[1]] &&
+        boxes[winningCombo[1]] === boxes[winningCombo[2]] &&
+        boxes[winningCombo[0]] !== ''
+      ) {
+        winner = true;
+        this.showMessage(currentPlayer, winner);
+      } else {
+        this.showMessage(currentPlayer, winner);
+      }
+    }
   }
 
   createGame() {
